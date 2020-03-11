@@ -77,13 +77,11 @@ if((substr_compare($_SESSION['permissao']['campanha'], '0', 0, 1)) == 0) {
                         <tr>
                             <th scope="col" data-field="descricao" data-sortable="true">Descrição</th>
                             <th scope="col" data-field="cidade" data-sortable="true">cidade</th>
+                            <th scope="col">Divulgar</th>'
                             <th scope="col">Detalhar</th>
                             <?php
                             if ((substr_compare($_SESSION['permissao']['campanha'], '1', 2, 1)) == 0) {
                                 echo '<th scope="col">Atualizar</th>';
-                            }
-                            if ((substr_compare($_SESSION['permissao']['campanha'], '1', 3, 1)) == 0) {
-                                echo '<th scope="col">Excluir</th>';
                             }
                             ?>
                         </tr>
@@ -104,13 +102,11 @@ if((substr_compare($_SESSION['permissao']['campanha'], '0', 0, 1)) == 0) {
                             echo '<tr>';
                             echo '<td>'. $row['descricao'] . '</td>';
                             echo '<td>'. $row['cidade'] . '</td>';
-                            echo '<td width="80"><a class="btn btn-outline-secondary btn-sm" href="update_projeto.php?id='.$row['id'].'">Inscritos</a></td>';
+                            echo '<td width="80"><a class="btn btn-outline-danger btn-sm" href="../campanha/cadastro.php?id='.$row['id'].'">Copiar Link</a></td>';
+                            echo '<td width="80"><a class="btn btn-outline-secondary btn-sm" href="../campanha/list_lead.php?id='.$row['id'].'">Inscritos</a></td>';
+                            echo ' ';
                             if ((substr_compare($_SESSION['permissao']['campanha'], '1', 2, 1)) == 0) {
                                 echo '<td width="80"><a class="btn btn-outline-warning btn-sm" href="update_projeto.php?id='.$row['id'].'">Atualizar</a></td>';
-                            }
-                            echo ' ';
-                            if ((substr_compare($_SESSION['permissao']['campanha'], '1', 3, 1)) == 0) {
-                                echo '<td width="80"><a class="btn btn-outline-danger btn-sm" href="delete_projeto.php?id='.$row['id'].'">Excluir</a></td>';
                             }
                             echo ' ';
                             echo '</tr>';
@@ -119,6 +115,12 @@ if((substr_compare($_SESSION['permissao']['campanha'], '0', 0, 1)) == 0) {
                             echo '</tbody>';
                         echo '</table>';
                         
+                        
+                        if($_SESSION["permissao"]['adm']) {
+                            echo '<td>';
+                                echo '<a href="../Usuario/list_usuario.php">Gerenciamento de usuários</a>';
+                            echo '</td>';
+                        }
                         
                         ?>
                     

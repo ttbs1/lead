@@ -19,9 +19,9 @@ class CampanhaControle {
         try {
             $pdo = conexao::conectar();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = 'SELECT * FROM campanha WHERE ativo = 1';
+            $sql = 'SELECT * FROM campanha WHERE ativo = 1 AND usuario_id = ?';
             $q = $pdo->prepare($sql);
-            $q->execute();
+            $q->execute(array($_SESSION['usuario_id']));
             $data = NULL;
             while($row = $q->fetch(PDO::FETCH_ASSOC)){
                 $data[] = $row;

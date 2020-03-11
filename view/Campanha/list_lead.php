@@ -2,10 +2,20 @@
 
 <?php
 session_start(); 
-if((substr_compare($_SESSION['permissao']['cliente'], '0', 0, 1)) == 0) {
+if((substr_compare($_SESSION['permissao']['campanha'], '0', 0, 1)) == 0) {
     header("Location: ../Erro/permissao.php");
 }
+
+if(!empty($_GET['id'])) {
+    $campanha_id = $_REQUEST['id'];
+} else {
+    header("Location: ../home/home.php");
+}
+
+
 ?>
+
+
 
 <html lang="pt-br">
 
@@ -51,32 +61,21 @@ if((substr_compare($_SESSION['permissao']['cliente'], '0', 0, 1)) == 0) {
                 </div>
                 
           </div>
-            <div style="text-align: right;">
-                <p>
-                    <?php
-                    if((substr_compare($_SESSION['permissao']['cliente'], '1', 1,1)) == 0) {
-                        echo '<a href="create_cliente.php" class="btn btn-outline-success">Adicionar</a>';
-                    }
-                    ?>
-                    <a href="read_cliente.php" class="btn btn-outline-primary">Pesquisar</a>
-                </p>
-            </div>
                 <table id="table" class="table table-striped" data-toggle="table" data-search="true" data-pagination="true"
-                        data-locale="pt-BR">
+                        data-locale="pt-BR" data-sort-name="datahora">
                     <thead>
                         <tr>
-                            <th scope="col" data-field="id" data-sortable="true">Id</th>
                             <th scope="col" data-field="nome" data-sortable="true">Nome</th>
-                            <th scope="col" data-field="cpf_cnpj" data-sortable="true" width="135">CPF/CNPJ</th>
+                            <th scope="col" data-field="idade" data-sortable="true" width="135">Idade</th>
                             <th scope="col" data-field="telefone1" data-sortable="true" width="135">Telefone 01</th>
                             <th scope="col" data-field="telefone2" data-sortable="true" width="135">Telefone 02</th>
                             <th scope="col" data-field="email" data-sortable="true">Email</th>
-                            <th scope="col">Detalhar</th>
+                            <th scope="col" data-field="datahora" data-sortable="true">Data/Hora</th>
                             <?php
-                            if ((substr_compare($_SESSION['permissao']['cliente'], '1', 2, 1)) == 0) {
+                            if ((substr_compare($_SESSION['permissao']['lead'], '1', 2, 1)) == 0) {
                                 echo '<th scope="col">Atualizar</th>';
                             }
-                            if ((substr_compare($_SESSION['permissao']['cliente'], '1', 3, 1)) == 0) {
+                            if ((substr_compare($_SESSION['permissao']['lead'], '1', 3, 1)) == 0) {
                                 echo '<th scope="col">Excluir</th>';
                             }
                             ?>
@@ -84,27 +83,28 @@ if((substr_compare($_SESSION['permissao']['cliente'], '0', 0, 1)) == 0) {
                     </thead>
                     <tbody>
                         <?php
-                        include_once '../../controller/ClienteControle.php';
+                        include_once '../../controller/LeadControle.php';
                         
-                        $clienteControle = new ClienteControle();
-                        $data = $clienteControle->listCliente();
-                        foreach($data as $row)
+                        $leadControle = new LeadControle();
+                        $data = $leadControle->listLead($campanha_id);
+                        if ($data) foreach($data as $row)
                         {
                             echo '<tr>';
-			                      echo '<th scope="row">'. $row['id'] . '</th>';
                             echo '<td>'. $row['nome'] . '</td>';
-                            echo '<td>'. $row['cpf_cnpj'] . '</td>';
+                            echo '<td>'. $row['idade'] . '</td>';
                             echo '<td>'. $row['telefone1'] . '</td>';
                             echo '<td>'. $row['telefone2'] . '</td>';
                             echo '<td>'. $row['email'] . '</td>';
+                            
+                            $datahora = new DateTime($row['datahora']);
+                            
+                            echo '<td> <div style="display:none">'.$datahora->format('YmdHis').'</div> '. $datahora->format('d/m/Y') .' às '. $datahora->format('H:i:s') . '</td>';
                             echo ' ';
-                            echo '<td width="80"><a class="btn btn-outline-secondary btn-sm" href="detail_cliente.php?id='.$row['id'].'">Detalhar</a></td>';
-                            echo ' ';
-                            if ((substr_compare($_SESSION['permissao']['cliente'], '1', 2, 1)) == 0) {
+                            if ((substr_compare($_SESSION['permissao']['lead'], '1', 2, 1)) == 0) {
                                 echo '<td width="80"><a class="btn btn-outline-warning btn-sm" href="update_cliente.php?id='.$row['id'].'">Atualizar</a></td>';
                             }
                             echo ' ';
-                            if ((substr_compare($_SESSION['permissao']['cliente'], '1', 3, 1)) == 0) {
+                            if ((substr_compare($_SESSION['permissao']['lead'], '1', 3, 1)) == 0) {
                                 echo '<td width="80"><a class="btn btn-outline-danger btn-sm" href="delete_cliente.php?id='.$row['id'].'">Excluir</a></td>';
                             }
                             echo ' ';

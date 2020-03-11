@@ -13,21 +13,19 @@ require_once '../../util/conexao.php';
  *
  * @author Thiago
  */
-class ClienteControle {
-    function inserirCliente ($cliente) {
+class LeadControle {
+    function inserirLead ($lead) {
         try {
             $pdo = conexao::conectar();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "INSERT INTO cliente (nome, cpf_cnpj, telefone1, telefone2, email, ativo) VALUES (?,?,?,?,?,?)";
+            $sql = "INSERT INTO lead (campanha_id, nome, idade, telefone1, telefone2, email, datahora, ativo) VALUES (?,?,?,?,?,?,?,?)";
             $q = $pdo->prepare($sql);
-            $q->execute(array($cliente->getNome(), $cliente->getCpf_cnpj(), $cliente->getTelefone1(), $cliente->getTelefone2(), $cliente->getEmail(), TRUE));
-            $sql2 = "INSERT INTO registro (usuario_id, acao, tabela, identificacao, datahora) VALUES (?,?,?,?,?)";
-            $q = $pdo->prepare($sql2);
             
             $date = new DateTime();
             $date->modify('-4 hours');
             $dateTime = $date->format("Y-m-d H:i:s");
-            $q->execute(array($_SESSION['usuario_id'], 'Cadastro', 'Cliente', $cliente->getNome(), $dateTime));
+            
+            $q->execute(array($lead->getCampanha_id(), $lead->getNome(), $lead->getIdade(), $lead->getTelefone1(), $lead->getTelefone2(), $lead->getEmail(), $dateTime, TRUE));
             $pdo = conexao::desconectar();
         } catch (Exception $ex) {
             return 'Erro: '. $ex->getMessage();
@@ -203,13 +201,13 @@ class ClienteControle {
         }
     }
     
-    function listCliente ( ) {
+    function listLead ($campanha_id) {
         try {
             $pdo = conexao::conectar();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = 'SELECT * FROM cliente WHERE ativo = 1 ORDER BY nome ASC';
+            $sql = 'SELECT l.id, l.nome, l.idade, l.telefone1, l.telefone2, l.email, datahora FROM lead l, campanha c WHERE l.ativo = 1 AND c.usuario_id = ? AND l.campanha_id = ? AND l.campanha_id = c.id';
             $q = $pdo->prepare($sql);
-            $q->execute();
+            $q->execute(array($_SESSION['usuario_id'], $campanha_id));
             $data = NULL;
             while($row = $q->fetch(PDO::FETCH_ASSOC)){
                 $data[] = $row;

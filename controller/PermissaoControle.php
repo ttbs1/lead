@@ -15,9 +15,9 @@ class PermissaoControle {
     function inserirPermissao ($pdo, $permissao) {
         try {
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "INSERT INTO permissao (adm, cliente, empresa, endereco, iteracao, projeto, tarefa, tipoprojeto, usuario) VALUES (?,?,?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO permissao (adm, lead, campanha, usuario) VALUES (?,?,?,?)";
             $q = $pdo->prepare($sql);
-            $q->execute(array($permissao->getAdm(), $permissao->getCliente(), $permissao->getEmpresa(), $permissao->getEndereco(), $permissao->getIteracao(), $permissao->getProjeto(), $permissao->getTarefa(), $permissao->getTipoprojeto(), $permissao->getUsuario()));
+            $q->execute(array($permissao->getAdm(), $permissao->getLead(), $permissao->getCampanha(), $permissao->getUsuario()));
             $id = $pdo->query("SELECT MAX(id) FROM permissao");
             $id = $id->fetchColumn();
             return array (
@@ -64,9 +64,9 @@ class PermissaoControle {
         try {
             $pdo = conexao::conectar();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE permissao SET adm = ?, cliente = ?, empresa = ?, endereco = ?, iteracao = ?, projeto = ?, tarefa = ?, tipoprojeto = ?, usuario = ? WHERE id = ?";
+            $sql = "UPDATE permissao SET adm = ?, lead = ?, campanha = ?, usuario = ? WHERE id = ?";
             $q = $pdo->prepare($sql);
-            $q->execute(array($permissao->getAdm(), $permissao->getCliente(), $permissao->getEmpresa(), $permissao->getEndereco(), $permissao->getIteracao(), $permissao->getProjeto(), $permissao->getTarefa(), $permissao->getTipoprojeto(), $permissao->getUsuario(), $id));
+            $q->execute(array($permissao->getAdm(), $permissao->getLead(), $permissao->getCampanha(), $permissao->getUsuario(), $id));
             $pdo = conexao::desconectar();
         } catch (Exception $ex) {
             return 'Erro: '. $ex->getMessage();

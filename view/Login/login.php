@@ -9,11 +9,13 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>PMA - Login</title>
         <link rel="icon" href="../../util/icon.png" type="image/icon type">
-        
-        
-        <link href="login.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="../../util/links/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <!-- Custom styles for this template -->
+        <link href="login.css" rel="stylesheet">
     </head>
-    <body>
+    <body class="text-center">
+        
         <?php
         
         session_start();
@@ -45,25 +47,20 @@ and open the template in the editor.
         }
         ?>
         
-        <div class="login-reg-panel">
-            
-            <div class="register-info-box">
-                    <h2>Humberto Amorim</h2>
-                    <p>Arquitetura e hurbanismo<br> algum texto legal etc</p>
+        <form class="form-signin" action="login.php" method="post">
+            <img class="mb-4" src="../../util/icon.png" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Faça login</h1>
+            <label for="usuario" class="sr-only">Usuário</label>
+            <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuário" required="" autofocus="">
+            <label for="senha" class="sr-only">Senha</label>
+            <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required="">
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Lembrar meus dados
+                </label>
             </div>
-						
-            <form action="login.php" method="post">
-                <div class="white-panel">
-                        <div class="login-show">
-                                <h2>LOGIN</h2>
-                                <input type="text" name="usuario" placeholder="Usuário">
-                                <input type="password" name="senha" placeholder="Senha">
-                                <button type="submit" value="Login">Login</button>
-                                <a href=""><?php if($msg) {echo 'Usuário ou senha incorretos!';} ?></a>
-                        </div>
-                </div>
-            </form>
-	</div>
-        
+            <button class="btn btn-lg btn-secondary btn-block" type="submit">Entrar</button>
+            <p class="mt-5 mb-3 text-muted">© 2020</p>
+        </form>
     </body>
 </html>

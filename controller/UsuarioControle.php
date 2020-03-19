@@ -25,18 +25,10 @@ class UsuarioControle {
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql = "INSERT INTO usuario (permissao_id, usuario, senha, ativo) VALUES (?,?,?,?)";
                 $q2 = $pdo->prepare($sql);
-                
-                $date = new DateTime();
-                $date->modify('-4 hours');
-                $dateTime = $date->format("Y-m-d H:i:s");
-                
                 $q2->execute(array($permissao_id[1], $usuario->getUsuario(), $usuario->getSenha(), TRUE));
-                $sql2 = "INSERT INTO registro (usuario_id, acao, tabela, identificacao, datahora) VALUES (?,?,?,?,?)";
-                $q = $pdo->prepare($sql2);
-                
-                $q->execute(array($_SESSION['usuario_id'], 'Cadastro', 'Usuário', $usuario->getUsuario(), $dateTime));
             } else {
-                echo 'Erro ao inserir permissões de usuário: '. $permissao_id[1];
+                $pdo = conexao::desconectar();
+                return 'Erro ao inserir permissões de usuário: '. $permissao_id[1];
             }
             $pdo = conexao::desconectar();
         } catch (Exception $ex) {
@@ -116,16 +108,6 @@ class UsuarioControle {
             $sql = "UPDATE usuario SET usuario = ?, senha = ?, ativo = ? WHERE id = ?";
             $q = $pdo->prepare($sql);
             $q->execute(array($usuario->getUsuario(), $usuario->getSenha(), TRUE, $id));
-            
-            $sql2 = "INSERT INTO registro (usuario_id, acao, tabela, identificacao, datahora) VALUES (?,?,?,?,?)";
-            $q = $pdo->prepare($sql2);
-            
-            
-            $date = new DateTime();
-            $date->modify('-4 hours');
-            $dateTime = $date->format("Y-m-d H:i:s");
-            
-            $q->execute(array($_SESSION['usuario_id'], 'Atualização', 'Usuário', $usuario->getUsuario(), $dateTime));
             $pdo = conexao::desconectar();
         } catch (Exception $ex) {
             return 'Erro: '. $ex->getMessage();
@@ -139,16 +121,6 @@ class UsuarioControle {
             $sql = "UPDATE usuario SET usuario = ?, ativo = ? WHERE id = ?";
             $q = $pdo->prepare($sql);
             $q->execute(array($usuario->getUsuario(), TRUE, $id));
-            
-            $sql2 = "INSERT INTO registro (usuario_id, acao, tabela, identificacao, datahora) VALUES (?,?,?,?,?)";
-            $q = $pdo->prepare($sql2);
-            
-            
-            $date = new DateTime();
-            $date->modify('-4 hours');
-            $dateTime = $date->format("Y-m-d H:i:s");
-            
-            $q->execute(array($_SESSION['usuario_id'], 'Atualização', 'Usuário', $usuario->getUsuario(), $dateTime));
             $pdo = conexao::desconectar();
         } catch (Exception $ex) {
             return 'Erro: '. $ex->getMessage();

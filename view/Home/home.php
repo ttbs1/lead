@@ -37,6 +37,13 @@ if((substr_compare($_SESSION['permissao']['campanha'], '0', 0, 1)) == 0) {
     <link href="../../util/styles.css" rel="stylesheet" type="text/css" />
     
     <link rel="stylesheet" href="../../util/links/bootstrap-table.min.css">
+    
+    
+    <script src="../../util/links/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="../../util/links/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="../../util/links/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../../util/links/bootstrap-table.min.js"></script>
+    <script src="../../util/links/bootstrap-table-locale-all.min.js"></script>
 </head>
 
 <body>
@@ -77,7 +84,7 @@ if((substr_compare($_SESSION['permissao']['campanha'], '0', 0, 1)) == 0) {
                         <tr>
                             <th scope="col" data-field="descricao" data-sortable="true">Descrição</th>
                             <th scope="col" data-field="cidade" data-sortable="true">cidade</th>
-                            <th scope="col">Divulgar</th>'
+                            <th scope="col">Divulgar</th>
                             <th scope="col">Detalhar</th>
                             <?php
                             if ((substr_compare($_SESSION['permissao']['campanha'], '1', 2, 1)) == 0) {
@@ -102,8 +109,12 @@ if((substr_compare($_SESSION['permissao']['campanha'], '0', 0, 1)) == 0) {
                             echo '<tr>';
                             echo '<td>'. $row['descricao'] . '</td>';
                             echo '<td>'. $row['cidade'] . '</td>';
-                            echo '<td width="80"><a class="btn btn-outline-danger btn-sm" href="../campanha/cadastro.php?id='.$row['id'].'">Copiar Link</a></td>';
-                            echo '<td width="80"><a class="btn btn-outline-secondary btn-sm" href="../campanha/list_lead.php?id='.$row['id'].'">Inscritos</a></td>';
+                            echo '<td>'
+                            
+                            .'<div style="display:none" id="copy'.$row['id'].'">localhost/phpproject2/view/campanha/cadastro.php?id='.$row['id'].'</div>'
+                            .'<a href="javascript:;" class="btn btn-outline-success btn-sm" onclick="copyToClipboard(\'#copy'.$row['id'].'\')" data-toggle="popover" data-placement="bottom" title="Link copiado!" data-content="Agora basta colar (ctrl+v) para divulgar sua campanha!">Copiar Link</a>';
+                            //. '<a class="btn btn-outline-success btn-sm" href="../campanha/cadastro.php?id='.$row['id'].'">Copiar Link</a></td>';
+                            echo '<td width="80"><a class="btn btn-outline-info btn-sm" href="../campanha/list_lead.php?id='.$row['id'].'">Inscritos</a></td>';
                             echo ' ';
                             if ((substr_compare($_SESSION['permissao']['campanha'], '1', 2, 1)) == 0) {
                                 echo '<td width="80"><a class="btn btn-outline-warning btn-sm" href="update_projeto.php?id='.$row['id'].'">Atualizar</a></td>';
@@ -128,13 +139,21 @@ if((substr_compare($_SESSION['permissao']['campanha'], '0', 0, 1)) == 0) {
                         
                     <!--<a href="../Home/home.php" type="btn" class="btn btn-default">Menu Principal</a>-->
         </div>
-    
-    <script src="../../util/links/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="../../util/links/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="../../util/links/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="../../util/links/bootstrap-table.min.js"></script>
-    <script src="../../util/links/bootstrap-table-locale-all.min.js"></script>
-    
+    <script>
+        
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+        });
+        
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+    </script>
+    <p></p>
 </body>
 
 </html>

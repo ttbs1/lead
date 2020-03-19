@@ -13,81 +13,36 @@
  */
 class permissao {
     private $adm;
-    private $cliente;
-    private $empresa;
-    private $endereco;
-    private $iteracao;
-    private $projeto;
-    private $tarefa;
-    private $tipoprojeto;
+    private $campanha;
+    private $lead;
     private $usuario;
     
     function getAdm() {
         return $this->adm;
     }
 
-    function setAdm($adm) {
-        $this->adm = $adm;
-    }
-        
-    function getCliente() {
-        return $this->cliente;
+    function getCampanha() {
+        return $this->campanha;
     }
 
-    function getEmpresa() {
-        return $this->empresa;
-    }
-
-    function getEndereco() {
-        return $this->endereco;
-    }
-
-    function getIteracao() {
-        return $this->iteracao;
-    }
-
-    function getProjeto() {
-        return $this->projeto;
-    }
-
-    function getTarefa() {
-        return $this->tarefa;
-    }
-
-    function getTipoprojeto() {
-        return $this->tipoprojeto;
+    function getLead() {
+        return $this->lead;
     }
 
     function getUsuario() {
         return $this->usuario;
     }
 
-    function setCliente($cliente) {
-        $this->cliente = $cliente;
+    function setAdm($adm) {
+        $this->adm = $adm;
     }
 
-    function setEmpresa($empresa) {
-        $this->empresa = $empresa;
+    function setCampanha($campanha) {
+        $this->campanha = $campanha;
     }
 
-    function setEndereco($endereco) {
-        $this->endereco = $endereco;
-    }
-
-    function setIteracao($iteracao) {
-        $this->iteracao = $iteracao;
-    }
-
-    function setProjeto($projeto) {
-        $this->projeto = $projeto;
-    }
-
-    function setTarefa($tarefa) {
-        $this->tarefa = $tarefa;
-    }
-
-    function setTipoprojeto($tipoprojeto) {
-        $this->tipoprojeto = $tipoprojeto;
+    function setLead($lead) {
+        $this->lead = $lead;
     }
 
     function setUsuario($usuario) {

@@ -114,60 +114,20 @@ if((substr_compare($_SESSION['permissao']['usuario'], '0', 1, 1)) == 0) {
                                         <td style="padding-left: 5%;"><input type="checkbox" name="marcar_usuario" id="marcar_usuario" onclick="marcarUsuarios();"></td>
                                     </tr>
                                     <tr>
-                                        <td><label>Empresas</label></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_empresa" id="ler_empresa" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_empresa" id="cadastrar_empresa" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_empresa" id="alterar_empresa" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_empresa" id="excluir_empresa"></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_empresa" id="marcar_empresa" onclick="marcarEmpresas();"></td>
+                                        <td><label>Leads</label></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_lead" id="ler_lead" checked=""></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_lead" id="cadastrar_lead" checked=""></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_lead" id="alterar_lead" checked=""></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_lead" id="excluir_lead"></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_lead" id="marcar_lead" onclick="marcarLeads();"></td>
                                     </tr>
                                     <tr>
-                                        <td><label>Clientes</label></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_cliente" id="ler_cliente" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_cliente" id="cadastrar_cliente" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_cliente" id="alterar_cliente" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_cliente" id="excluir_cliente"></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_cliente" id="marcar_cliente" onclick="marcarClientes();"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label>Endereços</label></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_endereco" id="ler_endereco" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_endereco" id="cadastrar_endereco" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_endereco" id="alterar_endereco" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_endereco" id="excluir_endereco"></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_endereco" id="marcar_endereco" onclick="marcarEnderecos();"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label>Projetos</label></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_projeto" id="ler_projeto" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_projeto" id="cadastrar_projeto" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_projeto" id="alterar_projeto" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_projeto" id="excluir_projeto"></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_projeto" id="marcar_projeto" onclick="marcarProjetos();"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label>Iterações</label></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_iteracao" id="ler_iteracao" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_iteracao" id="cadastrar_iteracao" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_iteracao" id="alterar_iteracao" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_iteracao" id="excluir_iteracao" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_iteracao" id="marcar_iteracao" onclick="marcarIteracoes();"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label>Tipos de Projeto</label></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_tipo" id="ler_tipo" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_tipo" id="cadastrar_tipo" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_tipo" id="alterar_tipo" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_tipo" id="excluir_tipo"></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_tipo" id="marcar_tipo" onclick="marcarTipos();"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label>Tarefas</label></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_tarefa" id="ler_tarefa" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_tarefa" id="cadastrar_tarefa" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_tarefa" id="alterar_tarefa" checked=""></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_tarefa" id="excluir_tarefa"></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_tarefa" id="marcar_tarefa" onclick="marcarTarefas();"></td>
+                                        <td><label>Campanhas</label></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_campanha" id="ler_campanha" checked=""></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_campanha" id="cadastrar_campanha" checked=""></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_campanha" id="alterar_campanha" checked=""></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_campanha" id="excluir_campanha"></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_campanha" id="marcar_campanha" onclick="marcarCampanhas();"></td>
                                     </tr>
 
                                     <script>
@@ -185,101 +145,31 @@ if((substr_compare($_SESSION['permissao']['usuario'], '0', 1, 1)) == 0) {
                                             }
                                         }
 
-                                        function marcarEmpresas() {
-                                            if(document.getElementById("marcar_empresa").checked == true) {
-                                                document.getElementById("ler_empresa").checked = true;
-                                                document.getElementById("cadastrar_empresa").checked = true;
-                                                document.getElementById("alterar_empresa").checked = true;
-                                                document.getElementById("excluir_empresa").checked = true;
+                                        function marcarLeads() {
+                                            if(document.getElementById("marcar_lead").checked == true) {
+                                                document.getElementById("ler_lead").checked = true;
+                                                document.getElementById("cadastrar_lead").checked = true;
+                                                document.getElementById("alterar_lead").checked = true;
+                                                document.getElementById("excluir_lead").checked = true;
                                             } else {
-                                                document.getElementById("ler_empresa").checked = false;
-                                                document.getElementById("cadastrar_empresa").checked = false;
-                                                document.getElementById("alterar_empresa").checked = false;
-                                                document.getElementById("excluir_empresa").checked = false;
+                                                document.getElementById("ler_lead").checked = false;
+                                                document.getElementById("cadastrar_lead").checked = false;
+                                                document.getElementById("alterar_lead").checked = false;
+                                                document.getElementById("excluir_lead").checked = false;
                                             }
                                         }
 
-                                        function marcarClientes() {
-                                            if(document.getElementById("marcar_cliente").checked == true) {
-                                                document.getElementById("ler_cliente").checked = true;
-                                                document.getElementById("cadastrar_cliente").checked = true;
-                                                document.getElementById("alterar_cliente").checked = true;
-                                                document.getElementById("excluir_cliente").checked = true;
+                                        function marcarCampanhas() {
+                                            if(document.getElementById("marcar_campanha").checked == true) {
+                                                document.getElementById("ler_campanha").checked = true;
+                                                document.getElementById("cadastrar_campanha").checked = true;
+                                                document.getElementById("alterar_campanha").checked = true;
+                                                document.getElementById("excluir_campanha").checked = true;
                                             } else {
-                                                document.getElementById("ler_cliente").checked = false;
-                                                document.getElementById("cadastrar_cliente").checked = false;
-                                                document.getElementById("alterar_cliente").checked = false;
-                                                document.getElementById("excluir_cliente").checked = false;
-                                            }
-                                        }
-
-                                        function marcarEnderecos() {
-                                            if(document.getElementById("marcar_endereco").checked == true) {
-                                                document.getElementById("ler_endereco").checked = true;
-                                                document.getElementById("cadastrar_endereco").checked = true;
-                                                document.getElementById("alterar_endereco").checked = true;
-                                                document.getElementById("excluir_endereco").checked = true;
-                                            } else {
-                                                document.getElementById("ler_endereco").checked = false;
-                                                document.getElementById("cadastrar_endereco").checked = false;
-                                                document.getElementById("alterar_endereco").checked = false;
-                                                document.getElementById("excluir_endereco").checked = false;
-                                            }
-                                        }
-
-                                        function marcarProjetos() {
-                                            if(document.getElementById("marcar_projeto").checked == true) {
-                                                document.getElementById("ler_projeto").checked = true;
-                                                document.getElementById("cadastrar_projeto").checked = true;
-                                                document.getElementById("alterar_projeto").checked = true;
-                                                document.getElementById("excluir_projeto").checked = true;
-                                            } else {
-                                                document.getElementById("ler_projeto").checked = false;
-                                                document.getElementById("cadastrar_projeto").checked = false;
-                                                document.getElementById("alterar_projeto").checked = false;
-                                                document.getElementById("excluir_projeto").checked = false;
-                                            }
-                                        }
-
-                                        function marcarIteracoes() {
-                                            if(document.getElementById("marcar_iteracao").checked == true) {
-                                                document.getElementById("ler_iteracao").checked = true;
-                                                document.getElementById("cadastrar_iteracao").checked = true;
-                                                document.getElementById("alterar_iteracao").checked = true;
-                                                document.getElementById("excluir_iteracao").checked = true;
-                                            } else {
-                                                document.getElementById("ler_iteracao").checked = false;
-                                                document.getElementById("cadastrar_iteracao").checked = false;
-                                                document.getElementById("alterar_iteracao").checked = false;
-                                                document.getElementById("excluir_iteracao").checked = false;
-                                            }
-                                        }
-
-                                        function marcarTipos() {
-                                            if(document.getElementById("marcar_tipo").checked == true) {
-                                                document.getElementById("ler_tipo").checked = true;
-                                                document.getElementById("cadastrar_tipo").checked = true;
-                                                document.getElementById("alterar_tipo").checked = true;
-                                                document.getElementById("excluir_tipo").checked = true;
-                                            } else {
-                                                document.getElementById("ler_tipo").checked = false;
-                                                document.getElementById("cadastrar_tipo").checked = false;
-                                                document.getElementById("alterar_tipo").checked = false;
-                                                document.getElementById("excluir_tipo").checked = false;
-                                            }
-                                        }
-
-                                        function marcarTarefas() {
-                                            if(document.getElementById("marcar_tarefa").checked == true) {
-                                                document.getElementById("ler_tarefa").checked = true;
-                                                document.getElementById("cadastrar_tarefa").checked = true;
-                                                document.getElementById("alterar_tarefa").checked = true;
-                                                document.getElementById("excluir_tarefa").checked = true;
-                                            } else {
-                                                document.getElementById("ler_tarefa").checked = false;
-                                                document.getElementById("cadastrar_tarefa").checked = false;
-                                                document.getElementById("alterar_tarefa").checked = false;
-                                                document.getElementById("excluir_tarefa").checked = false;
+                                                document.getElementById("ler_campanha").checked = false;
+                                                document.getElementById("cadastrar_campanha").checked = false;
+                                                document.getElementById("alterar_campanha").checked = false;
+                                                document.getElementById("excluir_campanha").checked = false;
                                             }
                                         }
                                     </script>

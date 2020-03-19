@@ -64,166 +64,51 @@ if(!empty($_POST)) {
     
     $usuario->getPermissao_id()->setUsuario($permissao);
     
-    if (isset($_POST['ler_empresa'])) {
+    if (isset($_POST['ler_lead'])) {
         $permissao = "1";
     } else {
         $permissao = "0";
     }
-    if (isset($_POST['cadastrar_empresa'])) {
+    if (isset($_POST['cadastrar_lead'])) {
         $permissao = $permissao."1";
     } else {
         $permissao = $permissao."0";
     }
-    if (isset($_POST['alterar_empresa'])) {
+    if (isset($_POST['alterar_lead'])) {
         $permissao = $permissao."1";
     } else {
         $permissao = $permissao."0";
     }
-    if (isset($_POST['excluir_empresa'])) {
+    if (isset($_POST['excluir_lead'])) {
         $permissao = $permissao."1";
     } else {
         $permissao = $permissao."0";
     }
     
-    $usuario->getPermissao_id()->setEmpresa($permissao);
+    $usuario->getPermissao_id()->setLead($permissao);
     
-    if (isset($_POST['ler_cliente'])) {
+    if (isset($_POST['ler_campanha'])) {
         $permissao = "1";
     } else {
         $permissao = "0";
     }
-    if (isset($_POST['cadastrar_cliente'])) {
+    if (isset($_POST['cadastrar_campanha'])) {
         $permissao = $permissao."1";
     } else {
         $permissao = $permissao."0";
     }
-    if (isset($_POST['alterar_cliente'])) {
+    if (isset($_POST['alterar_campanha'])) {
         $permissao = $permissao."1";
     } else {
         $permissao = $permissao."0";
     }
-    if (isset($_POST['excluir_cliente'])) {
-        $permissao = $permissao."1";
-    } else {
-        $permissao = $permissao."0";
-    }
-    
-    $usuario->getPermissao_id()->setCliente($permissao);
-    
-    if (isset($_POST['ler_endereco'])) {
-        $permissao = "1";
-    } else {
-        $permissao = "0";
-    }
-    if (isset($_POST['cadastrar_endereco'])) {
-        $permissao = $permissao."1";
-    } else {
-        $permissao = $permissao."0";
-    }
-    if (isset($_POST['alterar_endereco'])) {
-        $permissao = $permissao."1";
-    } else {
-        $permissao = $permissao."0";
-    }
-    if (isset($_POST['excluir_endereco'])) {
+    if (isset($_POST['excluir_campanha'])) {
         $permissao = $permissao."1";
     } else {
         $permissao = $permissao."0";
     }
     
-    $usuario->getPermissao_id()->setEndereco($permissao);
-    
-    if (isset($_POST['ler_projeto'])) {
-        $permissao = "1";
-    } else {
-        $permissao = "0";
-    }
-    if (isset($_POST['cadastrar_projeto'])) {
-        $permissao = $permissao."1";
-    } else {
-        $permissao = $permissao."0";
-    }
-    if (isset($_POST['alterar_projeto'])) {
-        $permissao = $permissao."1";
-    } else {
-        $permissao = $permissao."0";
-    }
-    if (isset($_POST['excluir_projeto'])) {
-        $permissao = $permissao."1";
-    } else {
-        $permissao = $permissao."0";
-    }
-    
-    $usuario->getPermissao_id()->setProjeto($permissao);
-    
-    if (isset($_POST['ler_iteracao'])) {
-        $permissao = "1";
-    } else {
-        $permissao = "0";
-    }
-    if (isset($_POST['cadastrar_iteracao'])) {
-        $permissao = $permissao."1";
-    } else {
-        $permissao = $permissao."0";
-    }
-    if (isset($_POST['alterar_iteracao'])) {
-        $permissao = $permissao."1";
-    } else {
-        $permissao = $permissao."0";
-    }
-    if (isset($_POST['excluir_iteracao'])) {
-        $permissao = $permissao."1";
-    } else {
-        $permissao = $permissao."0";
-    }
-    
-    $usuario->getPermissao_id()->setIteracao($permissao);
-    
-    if (isset($_POST['ler_tipo'])) {
-        $permissao = "1";
-    } else {
-        $permissao = "0";
-    }
-    if (isset($_POST['cadastrar_tipo'])) {
-        $permissao = $permissao."1";
-    } else {
-        $permissao = $permissao."0";
-    }
-    if (isset($_POST['alterar_tipo'])) {
-        $permissao = $permissao."1";
-    } else {
-        $permissao = $permissao."0";
-    }
-    if (isset($_POST['excluir_tipo'])) {
-        $permissao = $permissao."1";
-    } else {
-        $permissao = $permissao."0";
-    }
-    
-    $usuario->getPermissao_id()->setTipoprojeto($permissao);
-    
-    if (isset($_POST['ler_tarefa'])) {
-        $permissao = "1";
-    } else {
-        $permissao = "0";
-    }
-    if (isset($_POST['cadastrar_tarefa'])) {
-        $permissao = $permissao."1";
-    } else {
-        $permissao = $permissao."0";
-    }
-    if (isset($_POST['alterar_tarefa'])) {
-        $permissao = $permissao."1";
-    } else {
-        $permissao = $permissao."0";
-    }
-    if (isset($_POST['excluir_tarefa'])) {
-        $permissao = $permissao."1";
-    } else {
-        $permissao = $permissao."0";
-    }
-    
-    $usuario->getPermissao_id()->setTarefa($permissao);
+    $usuario->getPermissao_id()->setCampanha($permissao);
     $permissao_id = $_REQUEST['permissao_id'];
     
     $usuarioControle = new UsuarioControle();
@@ -346,60 +231,20 @@ if(!empty($_POST)) {
                                         <td style="padding-left: 5%;"><input type="checkbox" name="marcar_usuario" id="marcar_usuario" onclick="marcarUsuarios();"></td>
                                     </tr>
                                     <tr>
-                                        <td><label>Empresas</label></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_empresa" id="ler_empresa" <?php if(!empty($_POST['ler_empresa'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['empresa'], 0, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_empresa" id="cadastrar_empresa" <?php if(!empty($_POST['cadastrar_empresa'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['empresa'], 1, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_empresa" id="alterar_empresa" <?php if(!empty($_POST['alterar_empresa'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['empresa'], 2, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_empresa" id="excluir_empresa" <?php if(!empty($_POST['excluir_empresa'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['empresa'], 3, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_empresa" id="marcar_empresa" onclick="marcarEmpresas();"></td>
+                                        <td><label>Leads</label></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_lead" id="ler_lead" <?php if(!empty($_POST['ler_lead'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['lead'], 0, 1) == '1') { echo 'checked=""';} ?> ></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_lead" id="cadastrar_lead" <?php if(!empty($_POST['cadastrar_lead'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['lead'], 0, 1) == '1') { echo 'checked=""';} ?> ></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_lead" id="alterar_lead" <?php if(!empty($_POST['alterar_lead'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['lead'], 0, 1) == '1') { echo 'checked=""';} ?> ></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_lead" id="excluir_lead" <?php if(!empty($_POST['excluir_lead'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['lead'], 0, 1) == '1') { echo 'checked=""';} ?> ></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_lead" id="marcar_lead" onclick="marcarLeads();"></td>
                                     </tr>
                                     <tr>
-                                        <td><label>Clientes</label></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_cliente" id="ler_cliente" <?php if(!empty($_POST['ler_cliente'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['cliente'], 0, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_cliente" id="cadastrar_cliente" <?php if(!empty($_POST['cadastrar_cliente'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['cliente'], 1, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_cliente" id="alterar_cliente" <?php if(!empty($_POST['alterar_cliente'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['cliente'], 2, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_cliente" id="excluir_cliente" <?php if(!empty($_POST['excluir_cliente'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['cliente'], 3, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_cliente" id="marcar_cliente" onclick="marcarClientes();"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label>Endereços</label></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_endereco" id="ler_endereco" <?php if(!empty($_POST['ler_endereco'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['endereco'], 0, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_endereco" id="cadastrar_endereco" <?php if(!empty($_POST['cadastrar_endereco'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['endereco'], 1, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_endereco" id="alterar_endereco" <?php if(!empty($_POST['alterar_endereco'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['endereco'], 2, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_endereco" id="excluir_endereco" <?php if(!empty($_POST['excluir_endereco'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['endereco'], 3, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_endereco" id="marcar_endereco" onclick="marcarEnderecos();"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label>Projetos</label></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_projeto" id="ler_projeto" <?php if(!empty($_POST['ler_projeto'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['projeto'], 0, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_projeto" id="cadastrar_projeto" <?php if(!empty($_POST['cadastrar_projeto'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['projeto'], 1, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_projeto" id="alterar_projeto" <?php if(!empty($_POST['alterar_projeto'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['projeto'], 2, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_projeto" id="excluir_projeto" <?php if(!empty($_POST['excluir_projeto'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['projeto'], 3, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_projeto" id="marcar_projeto" onclick="marcarProjetos();"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label>Iterações</label></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_iteracao" id="ler_iteracao" <?php if(!empty($_POST['ler_iteracao'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['iteracao'], 0, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_iteracao" id="cadastrar_iteracao" <?php if(!empty($_POST['cadastrar_iteracao'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['iteracao'], 1, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_iteracao" id="alterar_iteracao" <?php if(!empty($_POST['alterar_iteracao'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['iteracao'], 2, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_iteracao" id="excluir_iteracao" <?php if(!empty($_POST['excluir_iteracao'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['iteracao'], 3, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_iteracao" id="marcar_iteracao" onclick="marcarIteracoes();"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label>Tipos de Projeto</label></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_tipo" id="ler_tipo" <?php if(!empty($_POST['ler_tipo'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['tipoprojeto'], 0, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_tipo" id="cadastrar_tipo" <?php if(!empty($_POST['cadastrar_tipo'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['tipoprojeto'], 1, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_tipo" id="alterar_tipo" <?php if(!empty($_POST['alterar_tipo'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['tipoprojeto'], 2, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_tipo" id="excluir_tipo" <?php if(!empty($_POST['excluir_tipo'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['tipoprojeto'], 3, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_tipo" id="marcar_tipo" onclick="marcarTipos();"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label>Tarefas</label></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_tarefa" id="ler_tarefa" <?php if(!empty($_POST['ler_tarefa'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['tarefa'], 0, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_tarefa" id="cadastrar_tarefa" <?php if(!empty($_POST['cadastrar_tarefa'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['tarefa'], 1, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_tarefa" id="alterar_tarefa" <?php if(!empty($_POST['alterar_tarefa'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['tarefa'], 2, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_tarefa" id="excluir_tarefa" <?php if(!empty($_POST['excluir_tarefa'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['tarefa'], 3, 1) == '1') { echo 'checked=""';} ?> ></td>
-                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_tarefa" id="marcar_tarefa" onclick="marcarTarefas();"></td>
+                                        <td><label>Campanhas</label></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="ler_campanha" id="ler_campanha" <?php if(!empty($_POST['ler_campanha'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['campanha'], 0, 1) == '1') { echo 'checked=""';} ?> ></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="cadastrar_campanha" id="cadastrar_campanha" <?php if(!empty($_POST['cadastrar_campanha'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['campanha'], 0, 1) == '1') { echo 'checked=""';} ?> ></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="alterar_campanha" id="alterar_campanha" <?php if(!empty($_POST['alterar_campanha'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['campanha'], 0, 1) == '1') { echo 'checked=""';} ?> ></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="excluir_campanha" id="excluir_campanha" <?php if(!empty($_POST['excluir_campanha'])) echo 'checked'; else if(empty ($_POST)) if(substr($data_fk['campanha'], 0, 1) == '1') { echo 'checked=""';} ?> ></td>
+                                        <td style="padding-left: 5%;"><input type="checkbox" name="marcar_campanha" id="marcar_campanha" onclick="marcarCampanhas();"></td>
                                     </tr>
 
                                     <script>
@@ -417,101 +262,31 @@ if(!empty($_POST)) {
                                             }
                                         }
 
-                                        function marcarEmpresas() {
-                                            if(document.getElementById("marcar_empresa").checked == true) {
-                                                document.getElementById("ler_empresa").checked = true;
-                                                document.getElementById("cadastrar_empresa").checked = true;
-                                                document.getElementById("alterar_empresa").checked = true;
-                                                document.getElementById("excluir_empresa").checked = true;
+                                        function marcarLeads() {
+                                            if(document.getElementById("marcar_lead").checked == true) {
+                                                document.getElementById("ler_lead").checked = true;
+                                                document.getElementById("cadastrar_lead").checked = true;
+                                                document.getElementById("alterar_lead").checked = true;
+                                                document.getElementById("excluir_lead").checked = true;
                                             } else {
-                                                document.getElementById("ler_empresa").checked = false;
-                                                document.getElementById("cadastrar_empresa").checked = false;
-                                                document.getElementById("alterar_empresa").checked = false;
-                                                document.getElementById("excluir_empresa").checked = false;
+                                                document.getElementById("ler_lead").checked = false;
+                                                document.getElementById("cadastrar_lead").checked = false;
+                                                document.getElementById("alterar_lead").checked = false;
+                                                document.getElementById("excluir_lead").checked = false;
                                             }
                                         }
 
-                                        function marcarClientes() {
-                                            if(document.getElementById("marcar_cliente").checked == true) {
-                                                document.getElementById("ler_cliente").checked = true;
-                                                document.getElementById("cadastrar_cliente").checked = true;
-                                                document.getElementById("alterar_cliente").checked = true;
-                                                document.getElementById("excluir_cliente").checked = true;
+                                        function marcarCampanhas() {
+                                            if(document.getElementById("marcar_campanha").checked == true) {
+                                                document.getElementById("ler_campanha").checked = true;
+                                                document.getElementById("cadastrar_campanha").checked = true;
+                                                document.getElementById("alterar_campanha").checked = true;
+                                                document.getElementById("excluir_campanha").checked = true;
                                             } else {
-                                                document.getElementById("ler_cliente").checked = false;
-                                                document.getElementById("cadastrar_cliente").checked = false;
-                                                document.getElementById("alterar_cliente").checked = false;
-                                                document.getElementById("excluir_cliente").checked = false;
-                                            }
-                                        }
-
-                                        function marcarEnderecos() {
-                                            if(document.getElementById("marcar_endereco").checked == true) {
-                                                document.getElementById("ler_endereco").checked = true;
-                                                document.getElementById("cadastrar_endereco").checked = true;
-                                                document.getElementById("alterar_endereco").checked = true;
-                                                document.getElementById("excluir_endereco").checked = true;
-                                            } else {
-                                                document.getElementById("ler_endereco").checked = false;
-                                                document.getElementById("cadastrar_endereco").checked = false;
-                                                document.getElementById("alterar_endereco").checked = false;
-                                                document.getElementById("excluir_endereco").checked = false;
-                                            }
-                                        }
-
-                                        function marcarProjetos() {
-                                            if(document.getElementById("marcar_projeto").checked == true) {
-                                                document.getElementById("ler_projeto").checked = true;
-                                                document.getElementById("cadastrar_projeto").checked = true;
-                                                document.getElementById("alterar_projeto").checked = true;
-                                                document.getElementById("excluir_projeto").checked = true;
-                                            } else {
-                                                document.getElementById("ler_projeto").checked = false;
-                                                document.getElementById("cadastrar_projeto").checked = false;
-                                                document.getElementById("alterar_projeto").checked = false;
-                                                document.getElementById("excluir_projeto").checked = false;
-                                            }
-                                        }
-
-                                        function marcarIteracoes() {
-                                            if(document.getElementById("marcar_iteracao").checked == true) {
-                                                document.getElementById("ler_iteracao").checked = true;
-                                                document.getElementById("cadastrar_iteracao").checked = true;
-                                                document.getElementById("alterar_iteracao").checked = true;
-                                                document.getElementById("excluir_iteracao").checked = true;
-                                            } else {
-                                                document.getElementById("ler_iteracao").checked = false;
-                                                document.getElementById("cadastrar_iteracao").checked = false;
-                                                document.getElementById("alterar_iteracao").checked = false;
-                                                document.getElementById("excluir_iteracao").checked = false;
-                                            }
-                                        }
-
-                                        function marcarTipos() {
-                                            if(document.getElementById("marcar_tipo").checked == true) {
-                                                document.getElementById("ler_tipo").checked = true;
-                                                document.getElementById("cadastrar_tipo").checked = true;
-                                                document.getElementById("alterar_tipo").checked = true;
-                                                document.getElementById("excluir_tipo").checked = true;
-                                            } else {
-                                                document.getElementById("ler_tipo").checked = false;
-                                                document.getElementById("cadastrar_tipo").checked = false;
-                                                document.getElementById("alterar_tipo").checked = false;
-                                                document.getElementById("excluir_tipo").checked = false;
-                                            }
-                                        }
-
-                                        function marcarTarefas() {
-                                            if(document.getElementById("marcar_tarefa").checked == true) {
-                                                document.getElementById("ler_tarefa").checked = true;
-                                                document.getElementById("cadastrar_tarefa").checked = true;
-                                                document.getElementById("alterar_tarefa").checked = true;
-                                                document.getElementById("excluir_tarefa").checked = true;
-                                            } else {
-                                                document.getElementById("ler_tarefa").checked = false;
-                                                document.getElementById("cadastrar_tarefa").checked = false;
-                                                document.getElementById("alterar_tarefa").checked = false;
-                                                document.getElementById("excluir_tarefa").checked = false;
+                                                document.getElementById("ler_campanha").checked = false;
+                                                document.getElementById("cadastrar_campanha").checked = false;
+                                                document.getElementById("alterar_campanha").checked = false;
+                                                document.getElementById("excluir_campanha").checked = false;
                                             }
                                         }
                                     </script>

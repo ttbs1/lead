@@ -37,14 +37,10 @@ if(!empty($_POST)) {
         <link href="../../util/styles.css" rel="stylesheet" type="text/css" />
         <link href="../../util/currencyStyle.css" rel="stylesheet" type="text/css" />
         
+        
         <script src="../../util/links/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script src="../../util/links/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="../../util/links/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-        <link type="text/css" href="../../util/links/jquery-ui-themes-1.12.1/jquery-ui.css" rel="stylesheet"/>
-        <script type="text/javascript" src="../../util/links/jquery-ui-1.12.1/jquery-ui.js"></script>
-        
-        <script type="text/javascript" src="../../util/jquery.mask.js"></script>
     </head>
     <body>
     <div class="container">
@@ -86,10 +82,10 @@ if(!empty($_POST)) {
                     
                     <div class="form-group col-md-8">
                         <label for="descricao">Descrição: </label>
-                        <textarea maxlength="450" class="form-control" rows="3" name="descricao" id="descricao"></textarea>
+                        <textarea maxlength="450" class="form-control" rows="3" name="descricao" id="descricao" required></textarea>
                     </div>
                 
-        <script type="text/javascript" src="../../util/links/jquery-1.9.1.js"></script>
+        
 	<script type="text/javascript">	
 		
 		$(document).ready(function () {
@@ -132,13 +128,13 @@ if(!empty($_POST)) {
 	</script>	
                     <div class="form-group col-md-3">
                         <label for="Estado">Estado: </label>
-                        <select class="form-control" id="estados" name="estado">
+                        <select class="form-control" id="estados" name="estado" required>
                                 <option value=""></option>
                         </select>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="cidade">Cidade: </label>
-                        <select class="form-control" id="cidades" name="cidade">
+                        <select class="form-control" id="cidades" name="cidade" required>
                         </select>
                     </div>
                 
@@ -170,7 +166,7 @@ if(!empty($_POST)) {
                 echo '<script> 
                     $(document).ready(function() {
                         $("#confirmModal").modal().on("hidden.bs.modal", function (e) {
-                            window.location.href = "list_projeto.php";
+                            window.location.href = "home.php";
                         });
                         $("#confirmModal").modal("toggle");
                     });
@@ -226,7 +222,7 @@ if(!empty($_POST)) {
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
-                  <a href="create_projeto.php" type="button" class="btn btn-primary" id="designar">Cadastrar Outro</a>
+                  <a href="create_campanha.php" type="button" class="btn btn-primary" id="designar">Cadastrar Outro</a>
                 </div>
               </div>
             </div>

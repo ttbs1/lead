@@ -57,6 +57,10 @@ if(!empty($_POST)) {
         <script src="../../util/links/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script src="../../util/links/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="../../util/links/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+        <script type="text/javascript" src="../../util/validationForm.js"></script>
+        
+        <script type="text/javascript" src="../../util/jquery.mask.js"></script>
     </head>
     <body>
     <div class="container">
@@ -71,7 +75,7 @@ if(!empty($_POST)) {
                 <h3 class="well"> Cadastrar na campanha </h3>
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="cadastro.php" method="post">
+                <form id="teste" class="form-horizontal needs-validation" novalidate action="cadastro.php" method="post">
 
                 <fieldset>
                 <legend>Meus dados:</legend>
@@ -79,16 +83,15 @@ if(!empty($_POST)) {
                 <input type="hidden" name="campanha_id" value="<?php echo $campanha_id ?>" />
                 
                 <div class="form-group col-md-8">
-                <label for="nome">Nome: </label>
-                        <span id="nome1" class="textfieldHintState">
-                            <input class="form-control" type="text" name="nome" id="nome" placeholder="Nome" value="" />
-                            <span class="textfieldMaxCharsMsg">Esse campo tem limite de 150 caracteres.</span>
-                               <span class="textfieldRequiredMsg">Esse campo é obrigatório</span>
-                        </span>
+                    <label for="nome">Nome: </label>
+                    <input class="form-control" type="text" required name="nome" id="nome" placeholder="Nome" value="" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ][A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s*?]{3,50}" />
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Nome inválido.
+                    </div>
                 </div>
-                <script>
-                    var nome1 = new Spry.Widget.ValidationTextField("nome1", "custom", {validateOn:["blur"], maxChars: 150});
-                </script>
                 
                 <div class="form-group col-md-8">
                     <label for="formControlRange">Idade: </label>
@@ -109,56 +112,42 @@ if(!empty($_POST)) {
                 
                 <div class="form-group col-md-2">
                     <label for="telefone">Telefone 01: </label>
-                    <select id=tipo1 onchange="changeTelType(1)">
-                        <option> </option>
-                        <option>Celular</option>
-                        <option>Fixo</option>
-                    </select>
-                    <div id="tel1field"></div>  
+                    <input class="form-control telefone" type="text" inputmode="tel" pattern=".{13,14}" required name="telefone1" id="telefone1" placeholder="(00)00000-0000" />
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                    <div class="invalid-feedback">
+                        Telefone inválido.
+                    </div>
                 </div>
 
                 <div class="form-group col-md-2">
                     <label for="telefone">Telefone 02: </label>
-                    <select id=tipo2 onchange="changeTelType(2)">
-                        <option> </option>
-                        <option>Celular</option>
-                        <option>Fixo</option>
-                    </select>
-                    <div id="tel2field"></div>
+                    <input class="form-control telefone" type="text" inputmode="tel" pattern=".{13,14}" name="telefone2" id="telefone2" placeholder="(00)00000-0000" />
+                    <div class="invalid-feedback">
+                        Telefone inválido.
+                    </div>
                 </div>
                 
                 <script type="text/javascript">
                     
+                    var SPMaskBehavior = function (val) {
+                        return val.replace(/\D/g, '').length === 11 ? '(00)00000-0000' : '(00)0000-00000';
+                    },
+                    spOptions = {
+                        onKeyPress: function(val, e, field, options) {
+                            field.mask(SPMaskBehavior.apply({}, arguments), options);
+                        }
+                    };
+
+                    $('.telefone').mask(SPMaskBehavior, spOptions);
                     
-                    
-                    function changeTelType(i) {
-                        var tipo = document.getElementById("tipo"+i).value;
-                        
-                        document.getElementById("tel"+i+"field").innerHTML = '<span id="telefone1'+i+'" class="textfieldHintState">'
-                        +       '<input class="form-control" type="text" name="telefone'+i+'" id="telefone'+i+'" />'
-                        +       '<span class="textfieldInvalidFormatMsg">Formato inválido de entrada</span>'
-                        +'</span>';
-                
-                        if(tipo == 'Celular'){
-                            document.getElementById("telefone"+i+"").placeholder = "(00)00000-0000";
-                            var telefone = new Spry.Widget.ValidationTextField("telefone1"+i, "custom", {format:"custom", pattern: "(00)90000-0000", validateOn:["blur"], useCharacterMasking: true, isRequired:false});
-                        }else if(tipo == 'Fixo') {
-                            document.getElementById("telefone"+i+"").placeholder = "(00)0000-0000";
-                            var telefone = new Spry.Widget.ValidationTextField("telefone1"+i, "custom", {format:"custom", pattern: "(00)0000-0000", validateOn:["blur"], useCharacterMasking: true, isRequired:false});
-                        } else document.getElementById("tel"+i+"field").innerHTML = "";
-                    }
                 </script>
 
                 <div class="form-group col-md-6">
                     <label for="email">E-Mail: </label>
-                            <span id="email1" class="textfieldHintState">
-                                <input type="text" class="form-control" name="email" id="email" placeholder="exemplo@meudominio.com" value="" /><br>
-                                <span class="textfieldInvalidFormatMsg">Endereço de e-mail inválido</span>
-                            </span>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="exemplo@meudominio.com" value="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" /><br>
                 </div>
-                <script>
-                    var email1 = new Spry.Widget.ValidationTextField("email1", "email", {validateOn:["blur"], maxChars: 85, isRequired: false});
-                </script>
                 
                 
                 </fieldset>
